@@ -1,0 +1,69 @@
+CREATE DATABASE Circus
+GO
+USE Circus
+GO
+DROP TABLE Clowns
+CREATE TABLE Clowns
+(
+    Id INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(64) CONSTRAINT DF_Clowns_Name DEFAULT('Mysterious Clown'),
+    Mail NVARCHAR(100),
+    Gender BIT,
+    Birthday DATETIME NOT NULL,
+    Presents INT,
+--  CONSTRAINT PK_Clowns_Id PRIMARY KEY(Id),
+    CONSTRAINT UQ_Clowns_Mail UNIQUE(Mail),
+    CONSTRAINT CK_Clowns_Presents CHECK(Presents > 0)
+)
+
+-- TINYINT
+-- SMALLINT
+-- INT
+-- BIGINT
+
+
+-- CHAR, NCHAR, NVARCHAR, VARCHAR
+
+
+ALTER TABLE Clowns
+ADD CONSTRAINT CK_Clowns_Presents CHECK(Presents > 0)
+
+ALTER TABLE Clowns
+DROP CONSTRAINT CK_Clowns_Presents
+
+ALTER TABLE Clowns
+DROP COLUMN Salary
+
+ALTER TABLE Clowns
+ADD Salary INT NOT NULL DEFAULT(0)
+
+ALTER TABLE Clowns
+ALTER COLUMN Presents TINYINT
+
+-- ALTER TABLE Clowns
+-- DROP CONSTRAINT DF__Clowns__Salary__5629CD9C
+
+INSERT INTO Clowns
+VALUES ('Alex', 'qwerty@gmail.com', 1, '2025-07-04 15:20', 0)
+
+-- Constraints
+-- PRIMARY KEY, UNIQUE, CHECK
+
+
+-- DATE
+-- TIME
+-- DATETIME
+-- DATETIME2
+
+-- NVARCHAR
+-- VARCHAR
+-- CHAR
+-- NCHAR
+
+-- DECIMAL(n, x)
+-- FLOAT
+
+-- TINYINT (1b)
+-- SMALLINT (2b)
+-- INT (4b)
+-- BIGINT (8b)
